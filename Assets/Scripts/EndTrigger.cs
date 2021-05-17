@@ -1,15 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class EndTrigger : MonoBehaviour
 {
     public GameManager gameManager;
-    public Text finalScore;
+ 
     private void OnTriggerEnter(Collider other)
     {
-        gameManager.CompleteLevel();
-        finalScore.text = "$" + KeepScore.Score.ToString();
+        if(other.transform.name == "Car")
+        {
+            gameManager.CompleteLevel();
+        }
     }
 }
