@@ -15,14 +15,14 @@ public class CollisionDetection : MonoBehaviour
         {
             KeepScore.Score += 100;
         }*/
-        KeepScore.Score -= 100;
-        if(KeepScore.Score <= 0)
+        GameDifficulty.Score -= 100;
+        if(GameDifficulty.Score <= 0)
         {
             gameManager.FailLevel();
         }
 
 #if (UNITY_WEBGL == true && UNITY_EDITOR == false)
-    SendScore (KeepScore.Score);
+    SendScore (GameDifficulty.Score);
 #endif
 
     }

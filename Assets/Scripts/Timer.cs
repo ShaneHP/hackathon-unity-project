@@ -8,14 +8,13 @@ public class Timer : MonoBehaviour
 {
     public static bool timerActive = false;
     public static float currentTime;
-    private int startMinutes = 1;
     public Text timerUI;
     public GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentTime = startMinutes * 60;
+        currentTime = GameDifficulty.StartMinutes * 60;
         timerActive = true;
     }
 

@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
         timerUI.enabled = false;
         TimeSpan time = TimeSpan.FromSeconds(Timer.currentTime);
         finalTime.text = time.ToString((@"mm\:ss\:ff"));
-        finalScore.text = KeepScore.Score.ToString();
+        finalScore.text = GameDifficulty.Score.ToString();
         completeLevelUI.SetActive(true);
         scoreUI.enabled = false;
         scoreLabel.enabled = false;
