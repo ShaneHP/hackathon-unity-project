@@ -5,20 +5,9 @@ using UnityEngine;
 
 public class CollisionDetection : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     [DllImport("__Internal")]
     private static extern void SendScore(int score);
+    public GameManager gameManager;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -26,7 +15,11 @@ public class CollisionDetection : MonoBehaviour
         {
             KeepScore.Score += 100;
         }*/
-        KeepScore.Score += 100;
+        KeepScore.Score -= 100;
+        if(KeepScore.Score <= 0)
+        {
+            gameManager.FailLevel();
+        }
 
 #if (UNITY_WEBGL == true && UNITY_EDITOR == false)
     SendScore (KeepScore.Score);

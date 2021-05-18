@@ -7,17 +7,34 @@ using System;
 public class GameManager : MonoBehaviour
 {
     public GameObject completeLevelUI;
+    public GameObject failLevelUI;
     public Text finalScore;
     public Text finalTime;
-    public GameObject scoreUI;
+    public Text scoreUI;
+    public Text scoreLabel;
+    public Text timerUI;
 
     public void CompleteLevel()
     {
         Timer.timerActive = false;
+        timerUI.enabled = false;
         TimeSpan time = TimeSpan.FromSeconds(Timer.currentTime);
         finalTime.text = time.ToString((@"mm\:ss\:ff"));
-        finalScore.text = "$" + KeepScore.Score.ToString();
+        finalScore.text = KeepScore.Score.ToString();
         completeLevelUI.SetActive(true);
-        scoreUI.SetActive(false);
+        scoreUI.enabled = false;
+        scoreLabel.enabled = false;
+        Time.timeScale = 0f;
+    }
+
+    public void FailLevel()
+    {
+        Debug.Log("YOU FAILED");
+        Timer.timerActive = false;
+        timerUI.enabled = false;
+        scoreUI.enabled = false;
+        scoreLabel.enabled = false;
+        failLevelUI.SetActive(true);
+        Time.timeScale = 0f;
     }
 }
