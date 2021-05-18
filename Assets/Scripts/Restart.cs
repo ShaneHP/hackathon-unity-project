@@ -1,0 +1,28 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class Restart : MonoBehaviour
+{
+    private bool fastMode = false;
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.B) && fastMode == false)
+        {
+            fastMode = true;
+            Time.timeScale = 3f;
+        } 
+        else if (Input.GetKeyDown(KeyCode.B))
+        {
+            fastMode = false;
+            Time.timeScale = 1f;
+        }
+    }
+}
