@@ -2,27 +2,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameDifficulty : MonoBehaviour
 {
     public static int StartMinutes = 2;
     public static int Score = 2000;
-    public static string currentDifficulty;
+    public static string currentDifficulty = "Medium";
     public Text difficultyUI;
 
     public void Start()
     {
-    #if (UNITY_WEBGL == true && UNITY_EDITOR == false)
-        WebGLInput.captureAllKeyboardInput = false;
-    #endif
-
-        setDifficulty("hard");
+        //setDifficulty("hard");
         Timer.currentTime = StartMinutes * 60;
-        //Time.timeScale = 0f;
+        //Time.timeScale = 0f;   
     }
 
-    public static void setDifficulty(string difficulty)
+    public void setDifficulty(string difficulty)
     {
         if(difficulty.Equals("Easy", StringComparison.CurrentCultureIgnoreCase))
         {
@@ -42,7 +39,7 @@ public class GameDifficulty : MonoBehaviour
             StartMinutes = 1;
             currentDifficulty = "Hard";
         }
-        Time.timeScale = 1f;
+        SceneManager.LoadScene(0);
     }
 
     public void FixedUpdate()
