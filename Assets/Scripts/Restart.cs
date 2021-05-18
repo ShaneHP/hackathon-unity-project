@@ -11,7 +11,7 @@ public class Restart : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene(0);
+            RestartGame();
         }
 
         if (Input.GetKeyDown(KeyCode.B) && fastMode == false)
@@ -24,5 +24,12 @@ public class Restart : MonoBehaviour
             fastMode = false;
             Time.timeScale = 1f;
         }
+    }
+
+    public void RestartGame()
+    {
+        GameDifficulty.setDifficulty(GameDifficulty.currentDifficulty);
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1f;
     }
 }

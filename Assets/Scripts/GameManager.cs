@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public Text scoreUI;
     public Text scoreLabel;
     public Text timerUI;
+    public Text difficultyLabel;
+    public Text difficulty;
 
     public void CompleteLevel()
     {
@@ -21,6 +23,8 @@ public class GameManager : MonoBehaviour
         TimeSpan time = TimeSpan.FromSeconds(Timer.currentTime);
         finalTime.text = time.ToString((@"mm\:ss\:ff"));
         finalScore.text = GameDifficulty.Score.ToString();
+        difficultyLabel.enabled = false;
+        difficulty.enabled = false;
         completeLevelUI.SetActive(true);
         scoreUI.enabled = false;
         scoreLabel.enabled = false;
@@ -34,6 +38,8 @@ public class GameManager : MonoBehaviour
         timerUI.enabled = false;
         scoreUI.enabled = false;
         scoreLabel.enabled = false;
+        difficultyLabel.enabled = false;
+        difficulty.enabled = false;
         failLevelUI.SetActive(true);
         Time.timeScale = 0f;
     }
