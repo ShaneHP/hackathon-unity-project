@@ -14,6 +14,7 @@ public class GameDifficulty : MonoBehaviour
     public void Start()
     {
         setDifficulty("easy");
+        //Time.timeScale = 0f;
     }
 
     public static void setDifficulty(string difficulty)
@@ -36,6 +37,7 @@ public class GameDifficulty : MonoBehaviour
             StartMinutes = 1;
             currentDifficulty = "Hard";
         }
+        Time.timeScale = 1f;
     }
 
     public void FixedUpdate()
