@@ -2,28 +2,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameDifficulty : MonoBehaviour
 {
-    public static int StartMinutes = 2;
-    public static int Score = 2000;
+    public static int StartMinutes;
+    public static int Score;
+    public static string currentDifficulty;
+    public Text difficultyUI;
 
-    public void setDifficulty(string difficulty)
+    public void Start()
     {
-        if(difficulty.Equals("easy", StringComparison.CurrentCultureIgnoreCase))
+        setDifficulty("easy");
+    }
+
+    public static void setDifficulty(string difficulty)
+    {
+        if(difficulty.Equals("Easy", StringComparison.CurrentCultureIgnoreCase))
         {
             Score = 3000;
             StartMinutes = 3;
+            currentDifficulty = "Easy";
         }
-        else if(difficulty.Equals("medium", StringComparison.CurrentCultureIgnoreCase))
+        else if(difficulty.Equals("Medium", StringComparison.CurrentCultureIgnoreCase))
         {
             Score = 2000;
             StartMinutes = 2;
+            currentDifficulty = "Medium";
         }
-        else if (difficulty.Equals("hard", StringComparison.CurrentCultureIgnoreCase))
+        else if (difficulty.Equals("Hard", StringComparison.CurrentCultureIgnoreCase))
         {
             Score = 1000;
             StartMinutes = 1;
+            currentDifficulty = "Hard";
         }
+    }
+
+    public void FixedUpdate()
+    {
+        difficultyUI.text = currentDifficulty;
     }
 }
