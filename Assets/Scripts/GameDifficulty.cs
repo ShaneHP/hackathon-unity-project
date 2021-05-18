@@ -6,14 +6,19 @@ using UnityEngine.UI;
 
 public class GameDifficulty : MonoBehaviour
 {
-    public static int StartMinutes;
-    public static int Score;
+    public static int StartMinutes = 2;
+    public static int Score = 2000;
     public static string currentDifficulty;
     public Text difficultyUI;
 
     public void Start()
     {
-        setDifficulty("easy");
+    #if (UNITY_WEBGL == true && UNITY_EDITOR == false)
+        WebGLInput.captureAllKeyboardInput = false;
+    #endif
+
+        setDifficulty("hard");
+        Timer.currentTime = StartMinutes * 60;
         //Time.timeScale = 0f;
     }
 

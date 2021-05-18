@@ -14,7 +14,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentTime = GameDifficulty.StartMinutes * 60;
+        //currentTime = GameDifficulty.StartMinutes * 60;
         timerActive = true;
     }
 
